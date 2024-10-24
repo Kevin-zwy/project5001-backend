@@ -1,1 +1,21 @@
-git add README.md .gitignore
+myenv/
+# *.pth
+*.pyc
+*.db
+*.log
+*.pot
+*.sqlite3
+*.sqlite
+*.sqlite3-journal
+*.sqlite3-shm
+*.sqlite3-wal
+*/__pycache__/
+*/migrations/
+.env
+db.sqlite3
+### OSX ###
+.DS_Store
+.AppleDouble
+.LSOverride
+*/media/audio/
+*/migrations/
