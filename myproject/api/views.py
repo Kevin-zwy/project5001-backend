@@ -26,30 +26,24 @@ class AudioFileViewSet(viewsets.ModelViewSet):
         if serializer.is_valid():
             serializer.save()
 
-            # 获取上传的WAV文件�?�?
+            # 获取上传的WAV文件�??�??
             audio_file = serializer.instance.audio_file
             audio_path = audio_file.path
 
-               
-               
-               
-               
-
-
-            # 确保文件存在
+            # Load the audio file
             if os.path.exists(audio_path):
-                # 使用 librosa 加载音频文件
                 audio_data, sr = librosa.load(audio_path, sr=None)
-                print("音频数据加载成功！")
+                print("audio load success")
             else:
-                print("文件不存在，请检查路径。")
+                print("audio load failed")
 
 
             audio_data, sr = librosa.load(audio_path, sr=None)
 
             features = extract_features(audio_data, sr)
 
-            voting_classifier= load_sklearn_model(r'D:\project\project5001-backend-master\myproject\detection\voting_classifier.joblib')
+            # voting_classifier= load_sklearn_model(r'D:\project\project5001-backend-master\myproject\detection\voting_classifier.joblib')
+            voting_classifier= load_sklearn_model(r'./detection/voting_classifier.joblib')
             voting_probabilities = predict(voting_classifier, features)
 
             # Determine the predicted label based on the voting classifier's probabilities

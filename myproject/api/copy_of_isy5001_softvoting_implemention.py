@@ -44,31 +44,4 @@ def predict(model, features):
         probabilities = model.predict_proba(features)[0]
 
     return probabilities
-
-# 定义音频文件路径
-audio_path = r"C:\Users\123\Desktop\project5001\AN_WILTY_EP15_truth1.wav"  # 替换为实际路径
-
-audio_data, sr = librosa.load(audio_path, sr=None)
-
-features = extract_features(audio_data, sr)
-
-voting_classifier= load_sklearn_model(r'D:\project\project5001-backend-master\myproject\detection\voting_classifier.joblib')
-voting_probabilities = predict(voting_classifier, features)
-
-
-
-
-# Determine the predicted label based on the voting classifier's probabilities
-predicted_label_voting = np.argmax(voting_probabilities)
-
-
-# Print the results
-print(f"Voting Classifier - Predicted Label: {predicted_label_voting}, Probabilities: {voting_probabilities}")
-
-
-
-
-labels = [ 'Deception','Truth']
-
-# Print the predicted label and lying probability for the Voting classifier
-print(f"\nVoting Classifier Prediction: {labels[predicted_label_voting]}, Lying Probability: {voting_probabilities[0]}")
+    
