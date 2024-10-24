@@ -17,5 +17,5 @@ db.sqlite3
 .DS_Store
 .AppleDouble
 .LSOverride
-*/media/audio/
+*.wav
 */migrations/
